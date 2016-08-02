@@ -42,13 +42,26 @@ describe ('Airport', function() {
       expect(function(){
         airport.takeOff(plane)
       }).toThrowError("Not safe to take off!");
-    })
+    });
 
     it('planes cannot land', function(){
       spyOn(Math, 'random').and.returnValue(0);
       expect(function(){
         airport.land(plane)
-      }).toThrowError("Not safe to land!")
-    })
-  })
+      }).toThrowError("Not safe to land!");
+    });
+  });
+
+  describe('when the airport is full', function() {
+    it('planes cannot land', function () {
+      spyOn(Math, 'random').and.returnValue(0.2);
+      for (var i = 0; i < AIRPORT_CAPACITY; i++) {
+      airport.land(plane)
+      }
+      expect(function() {
+        airport.land(plane)
+      }).toThrowError("The airport is full!");
+    });
+  });
+
 });
