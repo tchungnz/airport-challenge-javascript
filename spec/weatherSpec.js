@@ -3,14 +3,19 @@ describe('Weather', function(){
 
   beforeEach(function(){
     weather = new Weather;
-    spyOn(Math, 'random').and.returnValue(0);
   });
 
   describe('stormy', function(){
     it('returns true 20% of the time', function(){
-      console.log(weather.stormy)
-      console.log(Math.random())
-      expect(weather.stormy).toBeTruthy();
-    })
-  })
+      spyOn(Math, 'random').and.returnValue(0);
+      expect(weather.stormy()).toBeTruthy();
+    });
+  });
+
+  describe('no stormy', function() {
+    it('returns false 80% of the time', function(){
+      spyOn(Math, 'random').and.returnValue(0.3);
+      expect(weather.stormy()).toBeFalsy();
+    });
+  });
 });
