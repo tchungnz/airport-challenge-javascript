@@ -1,3 +1,5 @@
+// require('./src/array.js')()
+
 Airport = function () {
   this.planes = [];
 }
@@ -10,11 +12,11 @@ Airport.prototype.takeOff = function (plane) {
   this.planes.remove(plane);
 }
 
-Array.prototype.remove = function (value) {
-  if (this.indexOf(value)=== -1) {
-    return false;
-  }
-  else {
-    this.splice(this.indexOf(value), 1);
-    }
-}
+// Array.prototype.remove = function (value) {
+//   if (this.indexOf(value)=== -1) {
+//     return false;
+//   }
+//   else {
+//     this.splice(this.indexOf(value), 1);
+//   }
+// }

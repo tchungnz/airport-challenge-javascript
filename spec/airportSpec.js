@@ -4,7 +4,7 @@ describe ('Airport', function() {
 
   beforeEach (function () {
     airport = new Airport ();
-    plane = jasmine.createSpy('Plane')
+    plane = jasmine.createSpy('Plane');
   });
 
   describe ('when constructed it', function () {
@@ -33,5 +33,4 @@ describe ('Airport', function() {
       expect(airport.planes).not.toContain(plane);
     });
   });
-
 });
