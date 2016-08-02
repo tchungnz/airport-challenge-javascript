@@ -21,16 +21,34 @@ describe ('Airport', function() {
 
   describe ('when a plane is landed', function () {
     it('the airport has a plane', function () {
+      spyOn(Math, 'random').and.returnValue(0.2);
       airport.land(plane);
       expect(airport.planes).toEqual([plane]);
     });
   });
 
   describe ('when a plane has taken off', function () {
-    it('the airport has a plane', function () {
+    it('the airport does not have the plane', function () {
+      spyOn(Math, 'random').and.returnValue(0.2);
       airport.land(plane);
       airport.takeOff(plane);
       expect(airport.planes).not.toContain(plane);
     });
   });
+
+  describe ('when the weather is stormy', function(){
+    it('planes cannot take off', function(){
+      spyOn(Math, 'random').and.returnValue(0);
+      expect(function(){
+        airport.takeOff(plane)
+      }).toThrowError("Not safe to take off!");
+    })
+
+    it('planes cannot land', function(){
+      spyOn(Math, 'random').and.returnValue(0);
+      expect(function(){
+        airport.land(plane)
+      }).toThrowError("Not safe to land!")
+    })
+  })
 });
